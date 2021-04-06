@@ -1,0 +1,20 @@
+<thead>
+  <tr>
+    <th>Rentals Id</th>
+    <th>First Name + LastName</th>
+    <th>BrandName</th>
+    <th>RentDate</th>
+    <th>ReturnDate</th>
+  </tr>
+</thead>
+
+<table class="table">
+  <tr *ngFor="let rentalsDetail of rentalsDetails">
+    <td>{{ rentalsDetail.rentDetailId}}</td>
+    <td>{{ rentalsDetail.firstName }} ---{{rentalsDetail.lastName}}</td>
+    <td>{{ rentalsDetail.brandName }}</td>
+    <td>{{ rentalsDetail.rentDate}}</td>
+    <td>{{ rentalsDetail.returnDate }}</td>
+
+  </tr>
+</table>
