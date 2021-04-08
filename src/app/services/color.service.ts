@@ -1,7 +1,9 @@
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ColorResponseModule } from '../models/colorResponseModule';
+
+import { Color } from '../models/color';
+import { ListResponseModule } from '../models/listResponseModule';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,7 @@ import { ColorResponseModule } from '../models/colorResponseModule';
 export class ColorService {
   apiUrl="https://localhost:44302/api/colors/getall"
   constructor(private httpClient:HttpClient) { }
-  getColor():Observable<ColorResponseModule>{
-    return this.httpClient.get<ColorResponseModule>(this.apiUrl);
+  getColor():Observable<ListResponseModule<Color>>{
+    return this.httpClient.get<ListResponseModule<Color>>(this.apiUrl);
   }
 }

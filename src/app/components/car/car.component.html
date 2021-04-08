@@ -1,26 +1,31 @@
-
-
+<ul class="list group">
   <thead>
-    <tr>
+    <tr [class]="getAllCarClass()" routerLink="/cars">
       <th>Car Id</th>
-      <th>Brand Name</th>
-      <th>Color Name</th>
+      <th>Brand Id</th>
+      <th>Color ıd</th>
       <th>Car Name</th>
       <th>Daily Price</th>
       <th>Car Description</th>
-
     </tr>
   </thead>
 
+  <table class="table">
+    <tr
+      *ngFor="let car of cars"
+      (click)="setCurrentCar(car)"
+      routerLink="/carDetail/car/{{ car.carId }}"
+      [class]="getCurrentCarClass(car)"
+    >
+      <td>{{ car.carId }}</td>
+      <td>{{ car.carName }}</td>
+      <td>{{ car.brandId }}</td>
+      <td>{{ car.colorId }}</td>
+      <td>{{ car.dailyPrice }}</td>
+      <td>{{ car.carDescription }}</td>
+      <td > <input routerLink = "/carDetail/car/{{car.carId}}" class="btn btn-info" type="button" value="Detaya Git...">
 
-<table class="table">
-  <tr  *ngFor="let carDetail of carDetails">
-    <td>{{carDetail.carId}}</td>
-    <td>{{carDetail.carName}}</td>
-    <td>{{carDetail.brandName}}</td>
-    <td>{{carDetail.colorName}}</td>
-    <td>{{carDetail.dailyPrice}}</td>
-    <td>{{carDetail.carDescription}}</td>
-  </tr>
-
-</table>
+      </td>
+    </tr>
+  </table>
+</ul>

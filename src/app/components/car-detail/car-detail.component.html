@@ -1,0 +1,34 @@
+
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div *ngIf="currentCarDetails.image">
+      <div [class]="setCarouselItemClass(image)"  *ngFor="let image of currentCarDetails.image; let i = index" [ngClass]="i === 0 ? 'active': '' ">
+        <img [src]="currentCarDetails.image.length !== 0
+        ? imagePath +image
+        : imagePath + defaultlogo" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <div *ngIf="currentCarDetails.image.length===0"class="carousel-item active">
+      <img [src]="imagePath + defaultlogo" class="d-block w-100" alt="..." />
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<div>
+  <ul *ngIf="currentCarDetails" class="list-group list-group-flush"
+   >
+    <li class="list-group-item">Marka: {{currentCarDetails.brandName}}</li>
+    <li class="list-group-item">Renk: {{currentCarDetails.colorName}}</li>
+    <li class="list-group-item">Model Yılı: {{currentCarDetails.carName}}</li>
+    <li class="list-group-item">Günlük fiyat: {{currentCarDetails.dailyPrice |currency: "TRY":"symbol-narrow":"1.2-2" }}</li>
+    <li class="list-group-item">Findeks puanı: {{ currentCarDetails.carId }}</li>
+    <li class="list-group-item">Açıklama: {{currentCarDetails.carDescription}}</li>
+  </ul>
+</div>

@@ -1,4 +1,4 @@
-<thead>
+<!-- <thead>
   <tr>
     <th>Color Id</th>
     <th>Color Name</th>
@@ -10,4 +10,15 @@
     <td>{{ color.colorId }}</td>
     <td>{{ color.colorName }}</td>
   </tr>
-</table>
+</table> -->
+<ul class="list-group">
+  <li [class]="getAllColorClass()" routerLink="/cars">Tüm renkler</li>
+  <li (click)="setCurrentColor(color)"
+  *ngFor="let color of colors"
+  [class]="getCurrentColorClass(color)"
+  routerLink="/cars/color/{{color.colorId}}"
+  >
+{{color.colorName}}
+  </li>
+</ul>
+<h5 *ngIf="currentColor">{{currentColor.colorName}}</h5>
