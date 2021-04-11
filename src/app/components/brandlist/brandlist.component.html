@@ -1,0 +1,20 @@
+
+  <table  class="table" >
+    <thead>
+      <tr>
+        <th class="p-3 mb-2 bg-light text-dark">Marka Id</th>
+        <th class="p-3 mb-2 bg-light text-dark">Marka İsmi</th>
+        <th class="p-3 mb-2 bg-light text-dark">Marka Hakkında</th>
+      </tr>
+    </thead>
+    <tr
+    *ngFor="let brand of brands"
+    >
+      <td class="p-3 mb-2 bg-light text-dark">{{ brand.brandId }}</td>
+      <td class="p-3 mb-2 bg-light text-dark">{{ brand.brandName }}</td>
+      <td class="p-3 mb-2 bg-light text-dark">{{ brand.brandDescription }}</td>
+      <button
+      routerLink="/brand/update/{{brand.brandId}}"
+    class="btn btn-danger"><span>Güncelle</span></button>
+    </tr>
+  </table>

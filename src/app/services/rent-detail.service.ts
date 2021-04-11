@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ListResponseModule } from '../models/listResponseModule';
+import { ListResponseModel } from '../models/listResponseModel';
 import { RentDetail } from '../models/rentDetail';
 
 
@@ -14,10 +14,10 @@ export class RentDetailService {
   apiUrl="https://localhost:44302/api/rentdetails/getall";
   apiUrl1="https://localhost:44302/api/rentdetails/getRentalsDetail";
   constructor(private httpClient:HttpClient) { }
-  getRentDetail():Observable<ListResponseModule<RentDetail>>{
-    return this.httpClient.get<ListResponseModule<RentDetail>>(this.apiUrl);
+  getRentDetail():Observable<ListResponseModel<RentDetail>>{
+    return this.httpClient.get<ListResponseModel<RentDetail>>(this.apiUrl);
   }
-  getRentalsDetail():Observable<ListResponseModule<RentalsDetail>>{
-    return this.httpClient.get<ListResponseModule<RentalsDetail>>(this.apiUrl1);
+  getRentalsDetail():Observable<ListResponseModel<RentalsDetail>>{
+    return this.httpClient.get<ListResponseModel<RentalsDetail>>(this.apiUrl1);
   }
 }

@@ -1,0 +1,18 @@
+
+  <table  class="table" >
+    <thead>
+      <tr>
+        <th class="p-3 mb-2 bg-light text-dark">Renk Id</th>
+        <th class="p-3 mb-2 bg-light text-dark">Renk İsmi</th>
+      </tr>
+    </thead>
+    <tr
+    *ngFor="let color of colors"
+    >
+      <td class="p-3 mb-2 bg-light text-dark">{{ color.colorId }}</td>
+      <td class="p-3 mb-2 bg-light text-dark">{{ color.colorName }}</td>
+      <button
+      routerLink="/color/update/{{color.colorId}}"
+    class="btn btn-danger"><span>Güncelle</span></button>
+    </tr>
+  </table>

@@ -1,3 +1,59 @@
+<form class="list-group">
+  <br />
+  <br />
+  <tr>
+    <div class="form-row">
+      <div class="col-md-9 mb-3">
+        <td>
+          <div class="col-md-9 mb-3">
+            <label for="color">Renkler </label>
+            <select class="custom-select custom-select-lg mb-3">
+              <option selected>Renk Seçiniz</option>
+              <option *ngFor="let color of colors"
+
+              routerLink="cars/color/{{ color.colorId}}"
+              value="{{ color.colorId }}">
+                {{ color.colorName }}
+              </option>
+            </select>
+          </div>
+        </td>
+        <td>
+          <div class="col-md-9 mb-3">
+            <label for="brand">Markalar </label>
+            <select class="custom-select custom-select-lg mb-3">
+              <option selected>Marka Seçiniz</option>
+              <option *ngFor="let brand of brands"
+              submit="setCurrentBrand(brand)"
+               value="{{ brand.brandId }}">
+                {{ brand.brandName }}
+              </option>
+            </select>
+          </div>
+        </td>
+        <td>
+          <div class="col-md-9 mb-3">
+            <label for="filtre"></label>
+            <button type="submit" class="btn btn-primary mb-2">Filtrele</button>
+          </div>
+        </td>
+      </div>
+    </div>
+  </tr>
+</form>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Ürün Ara</label>
+  <input
+    type="text"
+    [(ngModel)]="filterText"
+    class="form-control"
+    id="filterText"
+    placeholder="Arama ifadesi girin."
+  />
+</div>
+<div *ngIf="filterText.length > 2" class="aler alert-success">
+  {{ filterText }} aradınız.
+</div>
 <ul class="list group">
   <thead>
     <tr [class]="getAllCarClass()" routerLink="/cars">
@@ -7,25 +63,42 @@
       <th>Car Name</th>
       <th>Daily Price</th>
       <th>Car Description</th>
+      <th></th>
     </tr>
   </thead>
 
   <table class="table">
-    <tr
-      *ngFor="let car of cars"
-      (click)="setCurrentCar(car)"
-      routerLink="/carDetail/car/{{ car.carId }}"
-      [class]="getCurrentCarClass(car)"
-    >
-      <td>{{ car.carId }}</td>
-      <td>{{ car.carName }}</td>
-      <td>{{ car.brandId }}</td>
-      <td>{{ car.colorId }}</td>
-      <td>{{ car.dailyPrice }}</td>
-      <td>{{ car.carDescription }}</td>
-      <td > <input routerLink = "/carDetail/car/{{car.carId}}" class="btn btn-info" type="button" value="Detaya Git...">
-
-      </td>
-    </tr>
+    <tbody>
+      <tr
+        *ngFor="let car of cars | filterPipe: filterText"
+        (click)="setCurrentCar(car)"
+        routerLink="/carDetail/car/{{ car.carId }}"
+        [class]="getCurrentCarClass(car)"
+      >
+        <td>{{ car.carId }}</td>
+        <td>{{ car.carName }}</td>
+        <td>{{ car.brandId }}</td>
+        <td>{{ car.colorId }}</td>
+        <td>{{ car.dailyPrice }}</td>
+        <td>{{ car.carDescription }}</td>
+        <td>
+          <input
+            routerLink="/carDetail/car/{{ car.carId }}"
+            class="btn btn-info"
+            type="button"
+            value="Detaya Git..."
+          />
+        </td>
+        <td>
+          <button
+            (click)="addToCart(car)"
+            type="button"
+            class="btn btn-success"
+          >
+            Kirala
+          </button>
+        </td>
+      </tr>
+    </tbody>
   </table>
 </ul>

@@ -1,4 +1,4 @@
-export interface ResponseModule{
+export interface ResponseModel{
 
   success:boolean,
   messages:string

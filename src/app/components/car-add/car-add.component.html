@@ -1,0 +1,77 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="title">Araç Ekle</h5>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="carAddForm">
+          <div class="mb-3">
+            <label for="carName"> Araç İsmi </label>
+            <div class="form-group">
+              <input
+                type="text"
+                id="carName"
+                formControlName="carName"
+                placeholder="Araç ismi girin."
+                class="form-control"
+              />
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="colorId"> Renk Id </label>
+            <div class="form-group">
+              <input
+                type="number"
+                id="colorId"
+                formControlName="colorId"
+                placeholder="Renk Id Girin"
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="brandId"> Marka Id </label>
+            <div class="form-group">
+              <input
+                type="number"
+                id="brandId"
+                formControlName="brandId"
+                placeholder="Marka id girin."
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="dailyPrice"> Günlük Kiralama </label>
+            <div class="form-group">
+              <input
+                type="number"
+                id="dailyPrice"
+                formControlName="dailyPrice"
+                placeholder="Günlük kiralama fiyatı girin."
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="carDescription"> Araç Hakkında </label>
+            <div class="form-group">
+              <input
+                type="text"
+                id="carDescription"
+                formControlName="carDescription"
+                placeholder="Araç hakkında yazı girin."
+                class="form-control"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-fill btn-primary" (click)="add()">Ekle</button>
+      </div>
+    </div>
+  </div>
+</div>
